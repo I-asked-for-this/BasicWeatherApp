@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    html {
+      color-scheme: light dark;
+    }
+
+    body {
+      margin: 3rem;
+      font-size: 2rem;
+      font-family: system-ui;
+    }
+
+    .quick-example {
+      margin: 1rem;
+      padding: 1rem;
+      background: hsl(200 50% 50% / 0.4);
+      border-radius: 0.5rem;
+
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.5s;
+    }
+
+    .quick-example > div {
+      overflow: hidden;
+    }
+
+    .quick-example:hover {
+      grid-template-rows: 1fr;
+    }
+
+  </style>
+</head>
+<body>
+<div class="quick-example">
+  <div>
+    this is amazing!
+  </div>
+</div>
+</body>
+</html>

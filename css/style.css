@@ -18,7 +18,7 @@ body {
     background-position: 100% 50%;
   }
   100% {
-    background-position: 0% 50%;
+    background-position: 0 50%;
   }
 }
 
@@ -26,21 +26,41 @@ body {
   width: 90%;
   min-width: 470px;
   max-width: 470px;
-  background: linear-gradient(135deg, #00feba, #5b548a);
   color: #fff;
-  margin: 100px auto;
-  border-radius: 20px;
-  padding: 40px 35px;
+  margin: 0 auto 100px;
+  border-radius: 0 0 20px 20px;
+  padding: 0 35px 40px;
   text-align: center;
   background-size: 200% 200%;
   animation: spin 7s linear infinite;
 }
 
+
+.card {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.75s;
+}
+
+.card > .cardContent {
+  overflow: hidden;
+}
+
+
 .search {
-  width: 100%;
+  width: 90%;
+  min-width: 470px;
+  max-width: 470px;
+  color: #fff;
+  margin: 100px auto 0;
+  border-radius: 20px 20px 0 0;
+  padding: 40px 35px 0;
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-size: 200% 50%;
+  animation: spin 7s linear infinite;
 }
 
 .search input {
@@ -126,7 +146,6 @@ body {
   height: 0;
   visibility: hidden;
 }
-
 
 
 .error {
