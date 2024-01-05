@@ -11,13 +11,15 @@ body {
 
 .card {
   width: 90%;
+  min-width: 470px;
   max-width: 470px;
   background: linear-gradient(135deg, #00feba, #5b548a);
   color: #fff;
-  margin: 100px auto 0;
+  margin: 100px auto ;
   border-radius: 20px;
   padding: 40px 35px;
   text-align: center;
+
 }
 
 .search {
@@ -95,13 +97,20 @@ body {
   width: 50px;
 }
 
-.humidity, .wind{
+
+.humidity, .wind {
   font-size: 20px;
   font-weight: lighter;
   margin-top: -6px;
 }
 
-.error{
+.weather {
+  display: none;
+}
+
+
+
+.error {
   text-align: left;
   font-size: 20px;
   margin-top: 20px;
