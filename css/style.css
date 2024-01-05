@@ -7,6 +7,19 @@
 
 body {
   background: #222;
+  overflow: hidden;
+}
+
+@keyframes spin {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .card {
@@ -15,11 +28,12 @@ body {
   max-width: 470px;
   background: linear-gradient(135deg, #00feba, #5b548a);
   color: #fff;
-  margin: 100px auto ;
+  margin: 100px auto;
   border-radius: 20px;
   padding: 40px 35px;
   text-align: center;
-
+  background-size: 200% 200%;
+  animation: spin 7s linear infinite;
 }
 
 .search {
@@ -105,7 +119,12 @@ body {
 }
 
 .weather {
-  display: none;
+
+}
+
+.content {
+  height: 0;
+  visibility: hidden;
 }
 
 
