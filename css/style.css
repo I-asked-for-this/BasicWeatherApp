@@ -39,7 +39,7 @@ body {
 .card {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.75s;
+  transition: grid-template-rows 1s;
 }
 
 .card > .cardContent {
@@ -61,6 +61,7 @@ body {
   justify-content: space-between;
   background-size: 200% 50%;
   animation: spin 7s linear infinite;
+  position: relative;
 }
 
 .search input {
@@ -91,7 +92,9 @@ body {
   margin-bottom: 30px;
   width: 250px;
   height: auto;
+  animation: fadeInOut 2s linear infinite;
 }
+
 
 .weather h1 {
   font-size: 60px;
@@ -150,8 +153,11 @@ body {
 
 .error {
   text-align: left;
-  font-size: 20px;
-  margin-top: 20px;
-  margin-left: 25px;
+  font-size: 17px;
+  margin-top: 10px;
+  margin-left: 37px;
   display: none;
+  position: absolute;
+  top: 100%;
+  left: 25px;
 }
