@@ -157,12 +157,8 @@ body {
 
 
 .error {
-  text-align: left;
-  font-size: 17px;
-  margin-top: 10px;
-  margin-left: 37px;
+  text-align: center;
+  font-weight: normal;
+  font-size: 25px;
   display: none;
-  position: absolute;
-  top: 100%;
-  left: 25px;
 }

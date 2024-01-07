@@ -4,25 +4,52 @@ const citySearchBox = document.querySelector(".search input")
 const searchBtn = document.querySelector(".search button")
 const weatherIcon = document.querySelector(".weatherIcon")
 
+document.addEventListener("DOMContentLoaded", () => {
+  updateGradient("Tunis").then(r => {
+  })
+})
+
 async function checkWeather(city) {
   const response = await fetch(apiURL + city + `&appid=${apiKey}`);
   if (response.status === 404) {
-    document.querySelector(".error").style.display = "block";
-    setTimeout(function () {
-      document.querySelector(".error").style.display = "none";
-    }, 2000);
-    document.querySelector(".content").style.visibility = "hidden";
-    document.querySelector('.card').style.gridTemplateRows = "0fr";
-    document.querySelector('.card').style.paddingTop = "0px";
-    document.querySelector('.search').style.paddingBottom = "0px";
+    // document.querySelector(".error").style.display = "block";
+    // setTimeout(function () {
+    //   document.querySelector(".error").style.display = "none";
+    // }, 2000);
+
+    weatherIcon.src = "../img/404.png";
+    document.querySelector('.error').innerHTML = "Invalid city name."
+    document.querySelector('.error').style.visibility = "visible";
+    document.querySelector('.error').style.display = "block";
+    document.querySelector('.content').style.height = "auto";
+    document.querySelector('.card').style.gridTemplateRows = "1fr";
+    document.querySelector('.card').style.paddingTop = "30px";
+    document.querySelector('.search').style.paddingBottom = "30px";
+    document.querySelector('.weatherIcon').style.visibility = "visible";
+    document.querySelector('.details').style.display = "none";
+    document.querySelector('.city').style.display = "none";
+    document.querySelector('.temp').style.display = "none";
+
+
+  } else if (response.status === 401) {
+    weatherIcon.src = "../img/401.png";
+    document.querySelector('.error').innerHTML = "Something on our end went Wrong :(."
+    document.querySelector('.error').style.display = "block";
+    document.querySelector('.weatherIcon').style.visibility = "hidden";
 
   } else {
+    await updateGradient(city);
     document.querySelector('.error').style.display = "none";
+    document.querySelector('.error').style.visibility = "hidden";
     document.querySelector('.content').style.height = "auto";
     document.querySelector('.content').style.visibility = "visible";
     document.querySelector('.card').style.gridTemplateRows = "1fr";
     document.querySelector('.card').style.paddingTop = "30px";
     document.querySelector('.search').style.paddingBottom = "30px";
+    document.querySelector('.details').style.display = "flex";
+    document.querySelector('.city').style.display = "block";
+    document.querySelector('.temp').style.display = "block";
+
 
     var data = await response.json();
     // console.log(data);
@@ -75,16 +102,22 @@ async function updateGradient(place) {
   const response = await fetch(`https://timezone.abstractapi.com/v1/current_time?api_key=${apiKey}&location=${place}`, options)
     .then(response => response.json());
 
-  var datetime = new Date(response.datetime);
-  var hour = datetime.getHours();
+  const datetime = new Date(response.datetime);
+  const hour = datetime.getHours();
 
-  var card = document.querySelector('.card');
-  var search = document.querySelector('.search')
+  console.log("hour " + hour)
 
-  if (hour >= 3 && hour < 12) {
+  const card = document.querySelector('.card');
+  const search = document.querySelector('.search')
+
+  const morningStart = 3;
+  const afternoonStart = 12;
+  const nightStart = 18;
+
+  if (hour >= morningStart && hour < afternoonStart) {
     card.style.backgroundImage = 'linear-gradient(135deg, #1199b8, #1fffff)';
     search.style.backgroundImage = 'linear-gradient(135deg, #1199b8, #1fffff)';
-  } else if (hour >= 12 && hour < 18) {
+  } else if (hour >= afternoonStart && hour < nightStart) {
     card.style.backgroundImage = 'linear-gradient(135deg, #f1707b, #fecf62)';
     search.style.backgroundImage = 'linear-gradient(135deg, #f1707b, #fecf62)';
   } else {
@@ -92,6 +125,7 @@ async function updateGradient(place) {
     search.style.backgroundImage = 'linear-gradient(135deg, #1B1F23, #251c7d)';
   }
 }
+
 
 
 // Function below made for testing:
@@ -110,5 +144,4 @@ async function updateGradient(place) {
 //   }
 // }
 
-updateGradient();
-setInterval(updateGradient, 30000);
+// setInterval(updateGradient, 30000);
