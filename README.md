@@ -1,13 +1,13 @@
 # Weather App
 
-This is a simple weather application built with JavaScript and CSS. It uses the OpenWeatherMap API to fetch weather data based on the city name entered by the user.
+This is a simple weather application built with JavaScript and CSS. It uses the OpenWeatherMap API to fetch weather data based on the city name entered by the user and the Abstract Timezone API to fetch the current time for the entered city.
 
 ## Features
 
 - Search weather by city name
 - Displays temperature, humidity, and wind speed
 - Updates weather icon based on the current weather condition
-- Displays an error message for invalid city names
+- Dynamic time implementation based on the area you're looking for using the Abstract Timezone API
 
 ## Setup
 
@@ -30,3 +30,5 @@ This project uses the OpenWeatherMap API and the Abstract Timezone API. You need
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
